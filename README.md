@@ -429,4 +429,7 @@ Certainly! Here's a format you can use for your README file:
 ### AXI Reference Guide
 - [AXI Reference Guide](https://www.xilinx.com/support/documents/ip_documentation/axi_ref_guide/latest/ug761_axi_reference_guide.pdf)
 
+### Theoretical background
+- [Simulation of quantum algorithms using classical probabilistic bits and circuits](https://arxiv.org/abs/2307.14452) 
+
 
