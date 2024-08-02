@@ -410,9 +410,6 @@ The module uses a state machine to control the sequence of operations:
 - The state machine controls the sequence of operations and ensures that each quantum gate is applied in the correct order.
 - The following code looke at the 2 q-bits case alone.
 
-Certainly! Here's a format you can use for your README file:
-
----
 
 ## Documentation and Resources
 
