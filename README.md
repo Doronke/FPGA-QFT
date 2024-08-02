@@ -5,9 +5,7 @@ In this project we aim to take the known QFT algorithm, 'translating' aim into c
 implementing both in python and on an FPGA device(Virtex VC709) while comparing the runtime of each implementation. for the python code we have the file: '2qbit_simulation.py' where we simulate the 2 q-bits case, and for the FPGA device we use 'SerialRead.py' to read the data sent from the FPGA to the pc, and 'matrix mutiplication' which consist all the needed modules to run the 2 q-bits case on the FPGA device, including the communication interface between the PC and the FPGA using UART-to-USB bridge provided on board.
 we will explain each part in details.
 
-**2qbit_simulation.py**
-
-# Quantum Gates and Sparse Matrix Operations
+# 2qbit_simulation.py - Quantum Gates and Sparse Matrix Operations
 
 This code defines and manipulates various quantum gates, represents them using both dense and sparse matrices,translating them to the classical presentation used as shown in the book project and the article, and simulates a 2-qubit quantum algorithm. The simulation includes gates like NOT, SWAP, Hadamard, and Phase gates..
 
@@ -67,9 +65,8 @@ print_sparse_matrix_for_verilog("sM_SWAP", sM_SWAP)
 - the code is tailored for the 2 q-bits case only.
 
 
-**SerialRead.py**
 
-# Serial Data Processing Script
+# SerialRead.py - Serial Data Processing Script
 
 This Python script reads data from a serial port, processes the data into 24-bit words, and prints each word in both binary and hexadecimal formats. The script is useful for reading and analyzing data from devices connected via a serial port.
 the 24-bit broken down to 3-1 byte words format was chosen as it fits the length of each word calculated in the FPGA device, while being able to send 1 byte word at a time from the UART-USB bridge.
