@@ -117,7 +117,7 @@ For more information on:
 - [pySerial Documentation](https://pyserial.readthedocs.io/)
 - [Serial Communication](https://en.wikipedia.org/wiki/Serial_communication)
 
-# Quantum Fourier Transform (QFT) Implementation using Qiskit
+# Quantum Fourier Transform (QFT) Implementation using Qiskit 'qiskitQFT.py'
 
 This script implements the Quantum Fourier Transform (QFT) algorithm using Qiskit, IBM's open-source framework for quantum computing. It includes functionality to create QFT circuits, simulate them, and estimate their execution time on real quantum hardware.
 
@@ -142,11 +142,11 @@ pip install qiskit
 
 ## Usage
 
-1. Save the script as `qft_simulated.py` (or any preferred name).
+1. Save the script as `qiskitQFT.py.py` (or any preferred name).
 2. Run the script using Python:
 
 ```
-python qft_simulated.py
+python qiskitQFT.py.py
 ```
 
 ## Output Explanation
