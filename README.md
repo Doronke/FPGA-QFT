@@ -5,6 +5,7 @@ In this project we aim to take the known QFT algorithm, 'translating' aim into c
 implementing both in python and on an FPGA device(Virtex VC709) while comparing the runtime of each implementation. for the python code we have the file: '2qbit_simulation.py' where we simulate the 2 q-bits case, and for the FPGA device we use 'SerialRead.py' to read the data sent from the FPGA to the pc, and 'matrix mutiplication' which consist all the needed modules to run the 2 q-bits case on the FPGA device, including the communication interface between the PC and the FPGA using UART-to-USB bridge provided on board.
 we will explain each part in details.
 
+additionaly a python script running the QFT algorithm using qiskit was used for comperison purpuses, named 'qskitQFT.py'.
 # 2qbit_simulation.py - Quantum Gates and Sparse Matrix Operations
 
 This code defines and manipulates various quantum gates, represents them using both dense and sparse matrices,translating them to the classical presentation used as shown in the book project and the article, and simulates a 2-qubit quantum algorithm. The simulation includes gates like NOT, SWAP, Hadamard, and Phase gates..
@@ -115,6 +116,69 @@ the 24-bit broken down to 3-1 byte words format was chosen as it fits the length
 For more information on:
 - [pySerial Documentation](https://pyserial.readthedocs.io/)
 - [Serial Communication](https://en.wikipedia.org/wiki/Serial_communication)
+
+# Quantum Fourier Transform (QFT) Implementation using Qiskit
+
+This script implements the Quantum Fourier Transform (QFT) algorithm using Qiskit, IBM's open-source framework for quantum computing. It includes functionality to create QFT circuits, simulate them, and estimate their execution time on real quantum hardware.
+
+## Features
+
+- Implements QFT for a variable number of qubits
+- Simulates the QFT circuit using Qiskit's QASM simulator
+- Measures simulation time on a classical computer
+- Estimates execution time on a real quantum computer
+- Provides performance metrics for QFT circuits with 2 to 10 qubits
+
+## Requirements
+
+- Python 3.7 or higher
+- Qiskit
+
+To install Qiskit, run:
+
+```
+pip install qiskit
+```
+
+## Usage
+
+1. Save the script as `qft_simulated.py` (or any preferred name).
+2. Run the script using Python:
+
+```
+python qft_simulated.py
+```
+
+## Output Explanation
+
+The script will output:
+
+1. The QFT circuit for 3 qubits (as an example).
+2. Simulation time for the 3-qubit circuit on a classical computer.
+3. Estimated execution time for the 3-qubit circuit on a real quantum computer.
+4. Performance metrics (simulation time and estimated execution time) for QFT circuits with 2 to 10 qubits.
+
+### Understanding the Output
+
+- **Simulation Time**: This is the actual time taken to simulate the circuit on your classical computer using Qiskit's QASM simulator.
+- **Estimated Execution Time**: This is a rough approximation of how long the circuit might take to run on a real quantum computer. It's based on typical gate times (50 ns for single-qubit gates, 300 ns for two-qubit gates).
+
+Note: The estimated execution time is a theoretical approximation and may differ significantly from actual run times on real quantum hardware due to various factors like qubit connectivity, hardware-specific gate times, and error rates.
+
+## Customization
+
+You can modify the script to:
+
+- Change the number of qubits in the example circuit (default is 3).
+- Adjust the range of qubits in the performance metrics loop (default is 2 to 10).
+- Modify the estimated gate times for more accurate hardware-specific estimates.
+
+## Further Reading
+
+To learn more about the Quantum Fourier Transform and Qiskit, check out:
+
+- [Qiskit Textbook - Quantum Fourier Transform](https://qiskit.org/textbook/ch-algorithms/quantum-fourier-transform.html)
+- [Qiskit Documentation](https://qiskit.org/documentation/)
 
 
 # 
