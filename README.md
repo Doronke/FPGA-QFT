@@ -559,6 +559,73 @@ The module uses a state machine to control the sequence of operations:
 - The state machine controls the sequence of operations and ensures that each quantum gate is applied in the correct order.
 - The following code looke at the 2 q-bits case alone.
 
+I'll start by reviewing the SystemVerilog file you provided and will draft a README based on its contents. Let me take a look first.
+
+The file `tb_4x4_QFT_SPARSE.sv` appears to be a testbench for a 4x4 Quantum Fourier Transform (QFT) system with sparse matrix representation. Here's a brief description of the file's contents to help craft a README:
+
+### Key Elements:
+- **Timescale Directive**: Uses a `1ns / 1ps` timescale.
+- **Testbench Name**: `tb_4x4_QFT_SPARSE`.
+- **Inputs**: 4 qubit inputs (`q0_in`, `q1_in`, `q2_in`, `q3_in`), and a clock (`clk`).
+- **Outputs**: Several outputs labeled `s0_out`, `s1_out`, `s2_out`, etc., representing quantum state probabilities (`prob0000`, `prob0001`, etc.).
+- **Clock Signal**: An always block toggles the clock every 0.002 time units.
+  
+I'll write a general README based on this structure.
+
+---
+
+The `fourXfour_QFT_sparse.sv` file contains the module definition for a 4x4 Quantum Fourier Transform (QFT) using sparse matrix operations. It defines the primary QFT module that will be instantiated or driven by the testbench you uploaded earlier.
+
+### Key Elements:
+- **Module Name**: `fourXfour_QFT_sparse`.
+- **Inputs**: 4 qubit inputs (`q0_in`, `q1_in`, `q2_in`, `q3_in`), clock signal (`clk`), and a control signal (`start2`).
+- **Outputs**: Several outputs like `s0_out`, `s1_out`, `s2_out`, `s3_out`, quantum state probabilities (`prob0000` to `prob1111`), and status signals like `counter`, `overflow`, and `matrix_ready`.
+
+# `fourXfour_QFT_sparse.sv`
+
+### Overview
+
+This repository contains the SystemVerilog module `fourXfour_QFT_sparse`, which implements a 4x4 Quantum Fourier Transform (QFT) using sparse matrix representation. This module is designed to perform the QFT operation on a set of quantum bits (qubits) and output the resulting quantum state probabilities.
+
+### File Structure
+
+- **Inputs**:
+  - `q0_in`, `q1_in`, `q2_in`, `q3_in`: Quantum bit inputs (qubits) for the QFT operation.
+  - `clk`: Clock input.
+  - `start2`: Control signal to start the QFT process.
+- **Outputs**:
+  - `s0_out`, `s1_out`, `s2_out`, `s3_out`: Outputs representing the transformed quantum states.
+  - `prob0000`, `prob0001`, `prob0010`, ..., `prob1111`: Probabilities for each possible quantum state after the QFT.
+  - `counter`, `overflow`, `matrix_ready`: Status outputs to track the process of the QFT operation.
+
+### Functionality
+
+This module performs the following tasks:
+1. **Sparse Matrix QFT**: Applies the Quantum Fourier Transform to a set of qubits using sparse matrix operations.
+2. **Output Processing**: Generates transformed quantum state outputs as well as probabilities for each of the 16 possible quantum states (from `0000` to `1111`).
+3. **Control Signals**: Utilizes the `start2` signal to control when the QFT operation begins, while monitoring the `counter`, `overflow`, and `matrix_ready` signals to track the state of the computation.
+
+### How to Use
+
+1. **Instantiation**: The module can be instantiated in a higher-level testbench (like `tb_4x4_QFT_SPARSE.sv`) or simulation environment.
+2. **Simulation**: To simulate the QFT, use any standard SystemVerilog simulator (e.g., ModelSim, VCS) on your testbench(there's an existing testbench in the 'matrix mutiplication with 4x4 simulation.zip' file):
+   ```sh
+   vsim your_test_bench_here
+   ```
+
+### Dependencies
+
+- This module requires a SystemVerilog simulator for testing.
+- It can be paired with a testbench (e.g., `tb_4x4_QFT_SPARSE.sv`) to apply inputs and observe outputs.
+
+
+# Additional Comments
+
+-all modules and script is intended for research and academic purposes.
+
+# License
+
+This project is open-source and available under the MIT License.
 
 # Documentation and Resources
 
@@ -579,3 +646,7 @@ The module uses a state machine to control the sequence of operations:
 - [Simulation of quantum algorithms using classical probabilistic bits and circuits](https://arxiv.org/abs/2307.14452) 
 
 
+
+
+
+Feel free to ask if you'd like to add anything else!
