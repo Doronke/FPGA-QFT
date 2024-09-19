@@ -152,6 +152,96 @@ make_spars(MCSWAP23)
 - This script is more flexible and can handle n-qubit systems.
 - It provides a framework for creating complex multi-controlled gates efficiently using sparse matrix operations.
 
+# 'qskitQFT.py' - 
+
+## Overview
+
+This Python script uses the Qiskit library to implement and simulate the **Quantum Fourier Transform (QFT)** on a quantum circuit. The program allows users to create a QFT circuit for any number of qubits, simulate it using the built-in `qasm_simulator`, and measure both the simulation time and an estimated execution time if the circuit were run on a real quantum computer.
+
+### Key Features:
+- **QFT Implementation**: Constructs a quantum circuit that performs the QFT for a specified number of qubits.
+- **Simulation**: Simulates the QFT circuit using a classical simulator.
+- **Performance Measurement**: Outputs the simulation time and provides an estimate for how long it would take to run the circuit on real quantum hardware, based on typical gate execution times.
+
+## Requirements
+
+To run this code, you need to have the following libraries installed:
+
+- `qiskit` (includes Qiskit Aer for simulation and Qiskit Terra for circuit creation)
+- `numpy` (for mathematical operations)
+- `matplotlib` (optional, for visualizing results with histograms if expanded)
+
+Install the required packages by running:
+
+```bash
+pip install qiskit numpy matplotlib
+```
+
+## Code Structure
+
+### 1. **`qft(n)`**
+This function implements the QFT for `n` qubits. It consists of two key operations:
+
+- **QFT Rotations**: Applies Hadamard gates and controlled phase rotations between qubits.
+- **Swap Registers**: Reverses the order of the qubits to match the expected output of the QFT.
+
+The function returns a quantum circuit with the QFT operations applied.
+
+### 2. **`simulate_and_time_qft(n, shots=1)`**
+This function handles the following tasks:
+
+- **Circuit Construction**: Creates a QFT circuit for the given number of qubits (`n`).
+- **Measurement**: Adds measurements to all qubits to extract classical results after the simulation.
+- **Simulation**: Executes the quantum circuit using the `qasm_simulator` backend.
+- **Timing**: Measures the time taken to simulate the QFT circuit.
+- **Execution Time Estimation**: Provides an estimate of how long the circuit would take to run on a real quantum computer, based on typical gate execution times:
+    - **Single-qubit gate time**: 50 nanoseconds
+    - **Two-qubit gate time**: 300 nanoseconds
+
+It returns:
+- The QFT circuit object.
+- The simulation time.
+- The estimated execution time for real quantum hardware.
+
+## Example Usage
+
+To create and simulate a QFT circuit for 40 qubits, simply run the following code:
+
+```python
+n = 40  # Number of qubits
+qft_circuit, simulation_time, estimated_execution_time = simulate_and_time_qft(n)
+
+print(f"QFT Circuit for {n} qubits:")
+print(qft_circuit)
+print(f"\nSimulation time: {simulation_time:.6f} seconds")
+print(f"Estimated execution time on a real quantum computer: {estimated_execution_time:.9f} seconds")
+```
+
+This will output the QFT circuit for 40 qubits, the time it took to simulate it, and the estimated time for execution on real quantum hardware.
+
+## Performance Testing
+
+To test the performance of the QFT simulation for different numbers of qubits, uncomment the following lines of code:
+
+```python
+for n in range(2, 5):
+    qft_circuit, simulation_time, estimated_execution_time = simulate_and_time_qft(n)
+    print(f"{n} qubits - Simulation: {simulation_time:.6f} s, Estimated execution: {estimated_execution_time:.9f} s")
+```
+
+This will loop through qubit counts from 2 to 4 and output the respective performance metrics.
+
+## Further Customization
+
+- **Number of Shots**: The `simulate_and_time_qft` function allows you to specify the number of shots (i.e., how many times to run the circuit) during the simulation. By default, it is set to 1, but you can increase this for more statistical accuracy.
+  
+- **Visualization**: You can extend this code to visualize the results (e.g., using Qiskit's `plot_histogram` function) to see the output state probabilities from the QFT circuit.
+
+## Notes
+
+- The execution time estimation is a rough approximation and assumes average gate times for single-qubit and two-qubit gates. These times may vary based on the specific quantum hardware used.
+  
+
 # SerialRead.py - Serial Data Processing Script
 
 This Python script reads data from a serial port, processes the data into 24-bit words, and prints each word in both binary and hexadecimal formats. The script is useful for reading and analyzing data from devices connected via a serial port.
