@@ -65,7 +65,92 @@ print_sparse_matrix_for_verilog("sM_SWAP", sM_SWAP)
 - The code is designed for both educational and practical purposes, providing insights into quantum gate operations and their efficient representation.
 - the code is tailored for the 2 q-bits case only.
 
+# 4qbit_simulation.py - Quantum Gates and Sparse Matrix Operations
 
+This script defines and manipulates quantum gates for a 4-qubit system, represents them using both dense and sparse matrices, and simulates a 4-qubit quantum algorithm.
+
+## Key Components
+
+### 1. Helper Functions
+- **print_sparse_matrix_for_verilog(name, sparse_matrix, filename)**: Converts a sparse matrix to a Verilog-compatible format, including information about non-zero elements.
+- **make_spars(matrix, tolerance=1e-8)**: Converts a given dense matrix to its sparse matrix representation using the Compressed Sparse Row (CSR) format.
+
+### 2. Matrix Definitions and Quantum Gates
+- **Zero Matrix**: `zero_2x2` is a 2x2 matrix filled with zeros.
+- **Identity Matrices**: `I4`, `I8`, and `I2` are 4x4, 8x8, and 2x2 identity matrices, respectively.
+- **Probabilistic Operations**: `P0` and `P1` are defined as probabilistic operations.
+- **NOT Gate**: `NOT` is a 2x2 matrix representing the NOT gate.
+- **Hadamard Gate**: `H` is a 2x2 Hadamard gate.
+- **Phase Gates**: `MP_pi_2`, `MP_pi_4`, and `MP_pi_8` represent phase gates with different angles.
+
+### 3. Composite Gates
+- **Controlled-NOT (CNOT) Gates**: `M_CNOT14`, `M_CNOT23`, `M_CNOT41`, and `M_CNOT32` are defined for different qubit pairs.
+- **SWAP Gates**: `M_SWAP14` and `M_SWAP23` are defined using sequences of CNOT gates.
+- **Controlled-Phase Gates**: `MCP34`, `MCP24`, `MCP23`, `MCP14`, `MCP13`, and `MCP12` are implemented for various qubit combinations.
+
+### 4. Quantum States
+- **Single Qubit States**: `q0` and `q1` represent the |0⟩ and |1⟩ states.
+- **Classical Base States**: `s0` and `s1` are defined as normalized classical base states.
+- **Entangled States**: `s01`, `s10`, `s00`, and `s11` represent entangled states of 2 qubits.
+
+### 5. Simulation
+The simulation applies a sequence of gates to an initial state and measures the runtime for both dense and sparse matrix representations.
+
+## Usage
+1. Run the script to define all gates, states, and helper functions.
+2. The simulation section applies various gates to an initial state and measures the performance for both dense and sparse matrices.
+3. Use `make_spars()` to create sparse representations of matrices.
+
+## Example
+To create a sparse representation of the CNOT gate and print it in Verilog format:
+```python
+sM_CNOT14 = make_spars(M_CNOT14)
+```
+
+## Notes
+- The code uses a custom fixed-point format with 24 bits for Verilog representation.
+- The script is designed for a 4-qubit system but can be extended for larger systems.
+
+# neqbit_gates.py - Multi-Controlled Gates
+
+This script purpose is to help create n-qubits control gates. the CPHASE creator still requires more work.
+
+## Key Components
+
+### 1. Helper Functions
+- **print_sparse_matrix_for_verilog(name, sparse_matrix, filename)**: Same as in the 4qbit_simulation.py script.
+- **make_spars(matrix, tolerance=1e-8)**: Enhanced version that handles both numpy arrays and scipy sparse matrices.
+
+### 2. Multi-Controlled Gate Functions
+- **make_mcgate_1n(n, P0, P1, gate)**: Creates a multi-controlled gate with control on the first qubit and target on the n-th qubit.
+- **make_mcgate_n1(n, P0, P1, gate)**: Creates a multi-controlled gate with control on the n-th qubit and target on the first qubit.
+- **make_mcgate_jk(n, j, k, P0, P1, gate)**: Creates a multi-controlled gate with control on the j-th qubit and target on the k-th qubit.
+- **make_mcpgate_jk(n, j, k, P0, P1, gate)**: Creates a multi-controlled phase gate.
+
+### 3. SWAP Gate Functions
+- **make_swapmcgate_1n(n, P0, P1)**: Creates a multi-controlled SWAP gate between the first and n-th qubit.
+- **make_swapmcgate_n1(n, P0, P1)**: Creates a multi-controlled SWAP gate between the n-th and first qubit.
+- **make_swapmcgate_jk(n, j, k, P0, P1)**: Creates a multi-controlled SWAP gate between the j-th and k-th qubit.
+
+### 4. Utility Functions
+- **from_Q_to_C(gate)**: Converts a quantum gate to its classical representation.
+- **make_MP(phi)**: Creates a phase gate with the given angle.
+
+## Usage
+1. Use the multi-controlled gate functions to create complex gates for n-qubit systems.
+2. Apply these gates in quantum circuit simulations.
+3. Use `make_spars()` to create sparse representations of the gates.
+
+## Example
+To create a multi-controlled phase gate and its sparse representation:
+```python
+MCSWAP23 = make_swapmcgate_jk(4,2,3, P0, P1) 
+make_spars(MCSWAP23)
+```
+
+## Notes
+- This script is more flexible and can handle n-qubit systems.
+- It provides a framework for creating complex multi-controlled gates efficiently using sparse matrix operations.
 
 # SerialRead.py - Serial Data Processing Script
 
@@ -475,7 +560,7 @@ The module uses a state machine to control the sequence of operations:
 - The following code looke at the 2 q-bits case alone.
 
 
-## Documentation and Resources
+# Documentation and Resources
 
 ### User Guide for VC709 Evaluation Board and FPGA
 - [VC709 Evaluation Board User Guide](https://www.mouser.com/datasheet/2/903/ug887-vc709-eval-board-v7-fpga-1596461.pdf)
