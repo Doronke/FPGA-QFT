@@ -675,7 +675,7 @@ The `fourXfour_QFT_sparse.sv` file contains the module definition for a 4x4 Quan
 
 ### Overview
 
-This repository contains the SystemVerilog module `fourXfour_QFT_sparse`, which implements a 4x4 Quantum Fourier Transform (QFT) using sparse matrix representation. This module is designed to perform the QFT operation on a set of quantum bits (qubits) and output the resulting quantum state probabilities.
+contains the SystemVerilog module `fourXfour_QFT_sparse`, which implements a 4x4 Quantum Fourier Transform (QFT) using sparse matrix representation. This module is designed to perform the QFT operation on a set of quantum bits (qubits) and output the resulting quantum state probabilities.
 
 ### File Structure
 
