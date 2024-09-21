@@ -732,6 +732,10 @@ This project is open-source and available under the MIT License.
 ### AXI Reference Guide
 - [AXI Reference Guide](https://www.xilinx.com/support/documents/ip_documentation/axi_ref_guide/latest/ug761_axi_reference_guide.pdf)
 
+### Axi protocol specifications
+- [AXIAMBA® AXI™ and ACE™ Protocol Specification](http://www.gstitt.ece.ufl.edu/courses/fall15/eel4720_5721/labs/refs/AXI4_specification.pdf)
+
+
 ### Theoretical background
 - [Simulation of quantum algorithms using classical probabilistic bits and circuits](https://arxiv.org/abs/2307.14452) 
 
