@@ -660,17 +660,6 @@ The file `tb_4x4_QFT_SPARSE.sv` appears to be a testbench for a 4x4 Quantum Four
 - **Outputs**: Several outputs labeled `s0_out`, `s1_out`, `s2_out`, etc., representing quantum state probabilities (`prob0000`, `prob0001`, etc.).
 - **Clock Signal**: An always block toggles the clock every 0.002 time units.
   
-I'll write a general README based on this structure.
-
----
-
-The `fourXfour_QFT_sparse.sv` file contains the module definition for a 4x4 Quantum Fourier Transform (QFT) using sparse matrix operations. It defines the primary QFT module that will be instantiated or driven by the testbench you uploaded earlier.
-
-### Key Elements:
-- **Module Name**: `fourXfour_QFT_sparse`.
-- **Inputs**: 4 qubit inputs (`q0_in`, `q1_in`, `q2_in`, `q3_in`), clock signal (`clk`), and a control signal (`start2`).
-- **Outputs**: Several outputs like `s0_out`, `s1_out`, `s2_out`, `s3_out`, quantum state probabilities (`prob0000` to `prob1111`), and status signals like `counter`, `overflow`, and `matrix_ready`.
-
 # `fourXfour_QFT_sparse.sv`
 
 ### Overview
